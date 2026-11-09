@@ -5,18 +5,11 @@ from langchain_groq import ChatGroq
 from langgraph.checkpoint.memory import InMemorySaver
 from dotenv import load_dotenv
 
-from rag.rag_pipeline import ask_rag
+from rag.rag_pipeline import ask_rag ,llm
 from tools.order_tool import check_order_status
 from tools.ticket_tool import create_ticket
 
 load_dotenv()
-
-
-# 1. Initialize LLM
-llm = ChatGroq(
-    model="openai/gpt-oss-20b",
-    temperature=0
-)
 
 
 # 2. Convert RAG function into a tool

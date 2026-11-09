@@ -6,6 +6,7 @@ from fastapi import HTTPException
 from langchain_community.document_loaders import TextLoader
 from rag.rag_pipeline import splitter, vector_db
 
+
 app = FastAPI()
 
 
@@ -13,6 +14,12 @@ app = FastAPI()
 class ChatRequest(BaseModel):
     message: str
     thread_id: str = "1"
+
+
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the AI Customer Support Assistant API!"}
+
 
 
 # 1. Chat API

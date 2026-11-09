@@ -47,12 +47,16 @@ embeddings = HuggingFaceEmbeddings(
 
 # 4. Store chunks in ChromaDB
 
-vector_db = Chroma.from_documents(
-    documents=chunks,
-    embedding=embeddings
+vector_db = Chroma(
+    collection_name="support_docs",
+    embedding_function=embeddings,
+    persist_directory="./chroma_db"
 )
 
-print("Chunks stored successfully")
+if not vector_db.get(limit=1)["ids"]:
+    vector_db.add_documents(chunks)
+    print("Chunks stored successfully")
+
 
 
 
