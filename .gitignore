@@ -1,5 +1,5 @@
 .env
 __pycache__/
 *.pyc
-chroma_db/git rm -r --cached chroma_db
+chroma_db/
 AI-Cutomer-Env/
